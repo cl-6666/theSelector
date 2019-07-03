@@ -2,6 +2,8 @@
 我看了有很多人写类似这种图片选择库，都是千篇一律，我也是取其中一个人的代码进行重构，因为项目经常用到
 
 版本更新历史：  
+[![](https://jitpack.io/v/cl-6666/theSelector.svg)](https://jitpack.io/#cl-6666/theSelector)  
+
 Version1.1.0：    
 1、可预览各文件夹下的图片  
 2、可配置是否支持相机拍照  
@@ -13,7 +15,8 @@ Version1.1.0：
 ```java
 1、如何在项目中引入该图片加载库：
 
-implementation 'com.github.cl-6666:theSelector:1.0.0'
+implementation 'com.github.cl-6666:theSelector:v1.0.0'
+
 
 2、如何自定义图片加载器（不定死框架，让框架更加灵活，需要去实现ImageLoader接口即可，如果需要显示视频，优先推荐Glide加载框架，可以参考Demo实现）：
 /**
