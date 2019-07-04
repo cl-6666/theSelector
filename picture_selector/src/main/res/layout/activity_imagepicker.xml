@@ -39,7 +39,7 @@
         android:layout_above="@id/rl_main_bottom"
         android:layout_below="@id/layout_actionBar">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_main_images"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

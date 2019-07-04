@@ -1,7 +1,6 @@
 package com.cl.picture_selector.executors;
 
-
-import androidx.annotation.NonNull;
+import android.support.annotation.NonNull;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
