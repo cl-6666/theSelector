@@ -45,13 +45,8 @@ import com.cl.picture_selector.utils.Utils;
 import com.cl.picture_selector.view.ImageFolderPopupWindow;
 
 import java.io.File;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import top.zibin.luban.CompressionPredicate;
-import top.zibin.luban.Luban;
-import top.zibin.luban.OnCompressListener;
 
 /**
  * 多图选择器主页面
