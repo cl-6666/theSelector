@@ -2,7 +2,6 @@ package com.cl.picture_selector.activity;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -16,6 +15,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
@@ -38,14 +38,20 @@ import com.cl.picture_selector.task.ImageLoadTask;
 import com.cl.picture_selector.task.MediaLoadTask;
 import com.cl.picture_selector.task.VideoLoadTask;
 import com.cl.picture_selector.utils.DataUtil;
+import com.cl.picture_selector.utils.LoadingDialog;
 import com.cl.picture_selector.utils.MediaFileUtil;
 import com.cl.picture_selector.utils.PermissionUtil;
 import com.cl.picture_selector.utils.Utils;
 import com.cl.picture_selector.view.ImageFolderPopupWindow;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import top.zibin.luban.CompressionPredicate;
+import top.zibin.luban.Luban;
+import top.zibin.luban.OnCompressListener;
 
 /**
  * 多图选择器主页面
@@ -62,6 +68,7 @@ public class ImagePickerActivity extends BaseActivity implements ImagePickerAdap
     private boolean isSingleType;
     private int mMaxCount;
     private List<String> mImagePaths;
+    List<File> fileList = new ArrayList<>();
 
     /**
      * 界面UI
@@ -72,7 +79,9 @@ public class ImagePickerActivity extends BaseActivity implements ImagePickerAdap
     private RecyclerView mRecyclerView;
     private TextView mTvImageFolders;
     private ImageFolderPopupWindow mImageFolderPopupWindow;
-    private ProgressDialog mProgressDialog;
+    protected LoadingDialog.Builder builder;
+    protected LoadingDialog dialog1;
+
     private RelativeLayout mRlBottom;
 
     private GridLayoutManager mGridLayoutManager;
@@ -150,7 +159,9 @@ public class ImagePickerActivity extends BaseActivity implements ImagePickerAdap
     @Override
     protected void initView() {
 
-        mProgressDialog = ProgressDialog.show(this, null, getString(R.string.scanner_image));
+        if (ConfigManager.getInstance().isShowLoading()) {
+            showLoading(ConfigManager.getInstance().getLoadingTitle());
+        }
 
         //顶部栏相关
         mTvTitle = findViewById(R.id.tv_actionBar_title);
@@ -332,7 +343,7 @@ public class ImagePickerActivity extends BaseActivity implements ImagePickerAdap
                         });
                         updateCommitButton();
                     }
-                    mProgressDialog.cancel();
+                    hideLoading();
                 }
             });
         }
@@ -613,6 +624,21 @@ public class ImagePickerActivity extends BaseActivity implements ImagePickerAdap
             ConfigManager.getInstance().getImageLoader().clearMemoryCache();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+
+    public void showLoading(String title) {
+        builder = new LoadingDialog.Builder(this)
+                .setMessage(title)
+                .setCancelable(false);
+        dialog1 = builder.create();
+        dialog1.show();
+    }
+
+    public void hideLoading() {
+        if (dialog1 != null && dialog1.isShowing()) {
+            dialog1.dismiss();
         }
     }
 
