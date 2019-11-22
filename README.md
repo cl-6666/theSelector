@@ -4,7 +4,7 @@
 版本更新历史：  
 [![](https://jitpack.io/v/cl-6666/theSelector.svg)](https://jitpack.io/#cl-6666/theSelector)  
 Version1.2.11： 
-1、放出系统相机拍照入口
+1、放出系统相机拍照入口  
 2、加载框可配置
 
 Version1.1.0：    
