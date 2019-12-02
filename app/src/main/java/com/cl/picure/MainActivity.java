@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextView;
     private ImageView tox;
 
+
     private static final int REQUEST_SELECT_IMAGES_CODE = 0x01;
     private ArrayList<String> mImagePaths;
 
