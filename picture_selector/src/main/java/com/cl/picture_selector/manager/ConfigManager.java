@@ -13,9 +13,12 @@ public class ConfigManager {
     public static final int SELECT_MODE_MULTI = 1;
 
     private String title;//标题
+    private String loadingTitle = "加载中...";//加载框标题
     private boolean showCamera;//是否显示拍照Item，默认不显示
     private boolean showImage = true;//是否显示图片，默认显示
     private boolean showVideo = true;//是否显示视频，默认显示
+    private boolean showLoading = true;//是否显示加载框，默认显示
+
     private int selectionMode = SELECT_MODE_SINGLE;//选择模式，默认单选
     private int maxCount = 1;//最大选择数量，默认为1
     private boolean singleType;//是否只支持选单类型（图片或者视频）
@@ -47,6 +50,14 @@ public class ConfigManager {
         this.title = title;
     }
 
+    public String getLoadingTitle() {
+        return loadingTitle;
+    }
+
+    public void setLoadingTitle(String loadingTitle) {
+        this.loadingTitle = loadingTitle;
+    }
+
     public boolean isShowCamera() {
         return showCamera;
     }
@@ -61,6 +72,14 @@ public class ConfigManager {
 
     public void setShowImage(boolean showImage) {
         this.showImage = showImage;
+    }
+
+    public boolean isShowLoading() {
+        return showLoading;
+    }
+
+    public void setShowLoading(boolean showLoading) {
+        this.showLoading = showLoading;
     }
 
     public boolean isShowVideo() {

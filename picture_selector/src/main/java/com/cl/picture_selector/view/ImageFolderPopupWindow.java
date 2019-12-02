@@ -2,13 +2,12 @@ package com.cl.picture_selector.view;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.PopupWindow;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.cl.picture_selector.R;
 import com.cl.picture_selector.adapter.ImageFoldersAdapter;

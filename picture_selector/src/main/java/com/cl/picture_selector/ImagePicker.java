@@ -2,6 +2,7 @@ package com.cl.picture_selector;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.provider.MediaStore;
 
 import com.cl.picture_selector.activity.ImagePickerActivity;
 import com.cl.picture_selector.manager.ConfigManager;
@@ -128,6 +129,46 @@ public class ImagePicker {
         return mImagePicker;
     }
 
+
+    /**
+     * 是否显示加载框
+     *
+     * @param showLoading
+     * @return
+     */
+    public ImagePicker showLoading(boolean showLoading) {
+        ConfigManager.getInstance().setShowLoading(showLoading);
+        return mImagePicker;
+    }
+
+
+    /**
+     * 默认加载框标题
+     *
+     * @param showLoading
+     * @param title
+     * @return
+     */
+    public ImagePicker showLoading(boolean showLoading, String title) {
+        ConfigManager.getInstance().setShowLoading(showLoading);
+        ConfigManager.getInstance().setLoadingTitle(title);
+        return mImagePicker;
+    }
+
+
+    /**
+     * 跳转系统相机
+     *
+     * @param activity
+     * @param requestCode
+     */
+    public void startCamera(Activity activity, int requestCode) {
+        Intent intent = new Intent();
+        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);   //拍照界面的隐式意图
+        activity.startActivityForResult(intent, requestCode);
+    }
+
+
     /**
      * 启动
      *
@@ -137,5 +178,6 @@ public class ImagePicker {
         Intent intent = new Intent(activity, ImagePickerActivity.class);
         activity.startActivityForResult(intent, requestCode);
     }
+
 
 }
