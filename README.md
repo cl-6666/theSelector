@@ -3,7 +3,7 @@
 效果图:  
 <img src="https://img-blog.csdnimg.cn/20190709181621899.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyMTQwMjQ0NzU=,size_16,color_FFFFFF,t_70" width=280/>
 
-![图2](https://img-blog.csdnimg.cn/20190709181654566.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyMTQwMjQ0NzU=,size_16,color_FFFFFF,t_70)  
+<img src="https://img-blog.csdnimg.cn/20190709181654566.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyMTQwMjQ0NzU=,size_16,color_FFFFFF,t_70" width=280/> 
 
 版本更新历史：  
 [![](https://jitpack.io/v/cl-6666/theSelector.svg)](https://jitpack.io/#cl-6666/theSelector)  
