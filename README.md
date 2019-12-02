@@ -6,7 +6,7 @@
 版本更新历史：  
 [![](https://jitpack.io/v/cl-6666/theSelector.svg)](https://jitpack.io/#cl-6666/theSelector)  
 Version1.2.22：   
-1.解决拍照返回无图片BUG
+1.解决拍照返回无图片BUG  
 2.支持可拍照裁剪
 
 Version1.2.20：   
