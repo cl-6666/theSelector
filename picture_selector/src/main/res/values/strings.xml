@@ -15,4 +15,7 @@
     <string name="permission_tip">当前没有读取存储卡或摄像头权限</string>
     <string name="image_select">选择</string>
     <string name="single_type_choose">不能同时选择图片与视频</string>
+    <string name="open_camera_failure">打开相机失败</string>
+    <string name="permission_camera_denied">请打开相关权限</string>
+
 </resources>

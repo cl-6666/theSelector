@@ -4,7 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.provider.MediaStore;
 
+import androidx.fragment.app.Fragment;
+
+import com.cl.picture_selector.activity.ImageCameraActivity;
 import com.cl.picture_selector.activity.ImagePickerActivity;
+import com.cl.picture_selector.manager.CameraConfig;
 import com.cl.picture_selector.manager.ConfigManager;
 import com.cl.picture_selector.utils.ImageLoader;
 
@@ -157,19 +161,6 @@ public class ImagePicker {
 
 
     /**
-     * 跳转系统相机
-     *
-     * @param activity
-     * @param requestCode
-     */
-    public void startCamera(Activity activity, int requestCode) {
-        Intent intent = new Intent();
-        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);   //拍照界面的隐式意图
-        activity.startActivityForResult(intent, requestCode);
-    }
-
-
-    /**
      * 启动
      *
      * @param activity
@@ -179,5 +170,22 @@ public class ImagePicker {
         activity.startActivityForResult(intent, requestCode);
     }
 
+
+    /**
+     * 跳转系统相机
+     *
+     * @param source
+     * @param config
+     * @param reqCode
+     */
+    public void toCameraActivity(Object source, CameraConfig config, int reqCode) {
+        if (source instanceof Activity) {
+            ImageCameraActivity.startForResult((Activity) source, config, reqCode);
+        } else if (source instanceof Fragment) {
+            ImageCameraActivity.startForResult((Fragment) source, config, reqCode);
+        } else if (source instanceof android.app.Fragment) {
+            ImageCameraActivity.startForResult((Fragment) source, config, reqCode);
+        }
+    }
 
 }

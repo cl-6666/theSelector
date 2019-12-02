@@ -2,6 +2,8 @@ package com.cl.picture_selector.activity;
 
 import android.Manifest;
 import android.animation.ObjectAnimator;
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -9,19 +11,19 @@ import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.FileProvider;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.FileProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.cl.picture_selector.ImagePicker;
 import com.cl.picture_selector.R;
@@ -63,7 +65,6 @@ public class ImagePickerActivity extends BaseActivity implements ImagePickerAdap
     private boolean isSingleType;
     private int mMaxCount;
     private List<String> mImagePaths;
-    List<File> fileList = new ArrayList<>();
 
     /**
      * 界面UI
@@ -245,7 +246,7 @@ public class ImagePickerActivity extends BaseActivity implements ImagePickerAdap
         //进行权限的判断
         boolean hasPermission = PermissionUtil.checkPermission(this);
         if (!hasPermission) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CAMERA_CODE);
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_PERMISSION_CAMERA_CODE);
         } else {
             startScannerTask();
         }
@@ -370,16 +371,18 @@ public class ImagePickerActivity extends BaseActivity implements ImagePickerAdap
      */
     private void updateImageTime() {
         int position = mGridLayoutManager.findFirstVisibleItemPosition();
-        MediaFile mediaFile = mImagePickerAdapter.getMediaFile(position);
-        if (mediaFile != null) {
-            if (mTvImageTime.getVisibility() != View.VISIBLE) {
-                mTvImageTime.setVisibility(View.VISIBLE);
+        if (position != RecyclerView.NO_POSITION) {
+            MediaFile mediaFile = mImagePickerAdapter.getMediaFile(position);
+            if (mediaFile != null) {
+                if (mTvImageTime.getVisibility() != View.VISIBLE) {
+                    mTvImageTime.setVisibility(View.VISIBLE);
+                }
+                String time = Utils.getImageTime(mediaFile.getDateToken());
+                mTvImageTime.setText(time);
+                showImageTime();
+                mMyHandler.removeCallbacks(mHideRunnable);
+                mMyHandler.postDelayed(mHideRunnable, 1500);
             }
-            String time = Utils.getImageTime(mediaFile.getDateToken());
-            mTvImageTime.setText(time);
-            showImageTime();
-            mMyHandler.removeCallbacks(mHideRunnable);
-            mMyHandler.postDelayed(mHideRunnable, 1500);
         }
     }
 
@@ -535,6 +538,8 @@ public class ImagePickerActivity extends BaseActivity implements ImagePickerAdap
         startActivityForResult(intent, REQUEST_CODE_CAPTURE);
     }
 
+
+
     /**
      * 当图片文件夹切换时，刷新图片列表数据源
      *
@@ -577,6 +582,7 @@ public class ImagePickerActivity extends BaseActivity implements ImagePickerAdap
                 Intent intent = new Intent();
                 intent.putStringArrayListExtra(ImagePicker.EXTRA_SELECT_IMAGES, list);
                 setResult(RESULT_OK, intent);
+                SelectionManager.getInstance().removeAll();//清空选中记录
                 finish();
             }
 

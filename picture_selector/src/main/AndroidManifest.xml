@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.cl.picture_selector">
 
@@ -7,16 +8,18 @@
 
     <application>
 
-        <!--图片列表Activity-->
+        <!-- 图片列表Activity -->
         <activity
-            android:name="com.cl.picture_selector.activity.ImagePickerActivity"
-            android:screenOrientation="portrait" />
-        <!--大图预览Activity-->
+            android:name=".activity.ImagePickerActivity"
+            android:screenOrientation="portrait" /> <!-- 大图预览Activity -->
         <activity
-            android:name="com.cl.picture_selector.activity.ImagePreActivity"
+            android:name=".activity.ImagePreActivity"
+            android:screenOrientation="portrait" /> <!-- Android 7.0 文件共享配置，必须配置 -->
+
+        <activity
+            android:name=".activity.ImageCameraActivity"
             android:screenOrientation="portrait" />
 
-        <!-- Android 7.0 文件共享配置，必须配置 -->
         <provider
             android:name=".provider.ImagePickerProvider"
             android:authorities="${applicationId}.provider"
