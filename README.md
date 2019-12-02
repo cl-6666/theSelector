@@ -1,5 +1,8 @@
 ### 介绍
-我看了有很多人写类似这种图片选择库，都是千篇一律，我也是取其中的代码进行重构，因为项目经常用到
+我看了有很多人写类似这种图片选择库，都是千篇一律，我也是取其中的代码进行重构，因为项目经常用到  
+效果图:  
+![图1](https://img-blog.csdnimg.cn/20190709181621899.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyMTQwMjQ0NzU=,size_16,color_FFFFFF,t_70)  
+![图2](https://img-blog.csdnimg.cn/20190709181654566.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyMTQwMjQ0NzU=,size_16,color_FFFFFF,t_70)  
 
 版本更新历史：  
 [![](https://jitpack.io/v/cl-6666/theSelector.svg)](https://jitpack.io/#cl-6666/theSelector)  
@@ -18,7 +21,7 @@ Version1.1.0：
 ```java
 1、如何在项目中引入该图片加载库：
 Android x用户引入---
-implementation 'com.github.cl-6666:theSelector:v1.0.0'
+implementation 'com.github.cl-6666:theSelector:v1.2.21'
 
 Android v7引入---
 implementation 'com.github.cl-6666:theSelector:v1.2.20'
@@ -79,19 +82,18 @@ public class GlideLoader implements ImageLoader {
                         
                         
 4、调用系统相机
-  ImagePicker.getInstance().startCamera(MainActivity.this, 200);
+                 CameraConfig config = new CameraConfig.Builder()
+                        .needCrop(false)
+                        .cropSize(1, 1, 200, 200)
+                        .build();
+                imagePicker.getInstance().toCameraActivity(MainActivity.this, config, REQUEST_SELECT_IMAGES_CODE);
+
               
 5、如何获取选中的图片集合：
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SELECT_IMAGES_CODE && resultCode == RESULT_OK) {
             List<String> imagePaths = data.getStringArrayListExtra(ImagePicker.EXTRA_SELECT_IMAGES);
-        }else if (requestCode == 200 && resultCode == Activity.RESULT_OK) {
-            Bundle bundle = data.getExtras();
-            Bitmap bm = (Bitmap) bundle.get("data");
-            if (bm != null) {
-                tox.setImageBitmap(bm);
-            }
         }
     }
 ```             
