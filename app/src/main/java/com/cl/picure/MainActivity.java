@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity implements GoodsMainFigureAd
 
     private static final int REQUEST_SELECT_IMAGES_CODE = 0x01;
     private ArrayList<String> mImagePaths;
-
     private ImagePicker imagePicker;
 
 
@@ -52,14 +51,10 @@ public class MainActivity extends AppCompatActivity implements GoodsMainFigureAd
 
             @Override
             public void onClick(View v) {
-                //todo 一定要先做权限判断
-                //imagePicker.getInstance().startCamera(MainActivity.this, 200);//设置是否展示视频setSingleType(true).startCamera();
-
                 CameraConfig config = new CameraConfig.Builder()
                         .needCrop(false)
                         .cropSize(1, 1, 200, 200)
                         .build();
-
                 imagePicker.getInstance().toCameraActivity(MainActivity.this, config, REQUEST_SELECT_IMAGES_CODE);
 
             }
