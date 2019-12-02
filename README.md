@@ -1,7 +1,8 @@
 ### 介绍
 我看了有很多人写类似这种图片选择库，都是千篇一律，我也是取其中的代码进行重构，因为项目经常用到  
 效果图:  
-![图1](https://img-blog.csdnimg.cn/20190709181621899.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyMTQwMjQ0NzU=,size_16,color_FFFFFF,t_70)  
+<img src="(https://img-blog.csdnimg.cn/20190709181621899.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyMTQwMjQ0NzU=,size_16,color_FFFFFF,t_70?raw=true" width=280 height=100/>
+
 ![图2](https://img-blog.csdnimg.cn/20190709181654566.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2EyMTQwMjQ0NzU=,size_16,color_FFFFFF,t_70)  
 
 版本更新历史：  
