@@ -3,8 +3,11 @@ package com.cl.picture_selector;
 import android.app.Activity;
 import android.content.Intent;
 import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
 
+import com.cl.picture_selector.activity.ImageCameraActivity;
 import com.cl.picture_selector.activity.ImagePickerActivity;
+import com.cl.picture_selector.manager.CameraConfig;
 import com.cl.picture_selector.manager.ConfigManager;
 import com.cl.picture_selector.utils.ImageLoader;
 
@@ -177,6 +180,24 @@ public class ImagePicker {
     public void start(Activity activity, int requestCode) {
         Intent intent = new Intent(activity, ImagePickerActivity.class);
         activity.startActivityForResult(intent, requestCode);
+    }
+
+
+    /**
+     * 跳转系统相机
+     *
+     * @param source
+     * @param config
+     * @param reqCode
+     */
+    public void toCameraActivity(Object source, CameraConfig config, int reqCode) {
+        if (source instanceof Activity) {
+            ImageCameraActivity.startForResult((Activity) source, config, reqCode);
+        } else if (source instanceof Fragment) {
+            ImageCameraActivity.startForResult((Fragment) source, config, reqCode);
+        } else if (source instanceof android.app.Fragment) {
+            ImageCameraActivity.startForResult((Fragment) source, config, reqCode);
+        }
     }
 
 

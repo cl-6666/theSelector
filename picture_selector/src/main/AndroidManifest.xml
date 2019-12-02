@@ -16,6 +16,10 @@
             android:name="com.cl.picture_selector.activity.ImagePreActivity"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.ImageCameraActivity"
+            android:screenOrientation="portrait" />
+
         <!-- Android 7.0 文件共享配置，必须配置 -->
         <provider
             android:name=".provider.ImagePickerProvider"
