@@ -23,7 +23,7 @@ Android x用户引入---
 implementation 'com.github.cl-6666:theSelector:v1.2.21'
 
 Android v7引入---
-implementation 'com.github.cl-6666:theSelector:v1.2.20'
+implementation 'com.github.cl-6666:theSelector:v1.2.22'
 
 
 
@@ -82,7 +82,7 @@ public class GlideLoader implements ImageLoader {
                         
 4、调用系统相机
                  CameraConfig config = new CameraConfig.Builder()
-                        .needCrop(false)
+                        .needCrop(false)   //是否裁剪
                         .cropSize(1, 1, 200, 200)
                         .build();
                 imagePicker.getInstance().toCameraActivity(MainActivity.this, config, REQUEST_SELECT_IMAGES_CODE);
