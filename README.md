@@ -90,12 +90,6 @@ public class GlideLoader implements ImageLoader {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_SELECT_IMAGES_CODE && resultCode == RESULT_OK) {
             List<String> imagePaths = data.getStringArrayListExtra(ImagePicker.EXTRA_SELECT_IMAGES);
-        }else if (requestCode == 200 && resultCode == Activity.RESULT_OK) {
-            Bundle bundle = data.getExtras();
-            Bitmap bm = (Bitmap) bundle.get("data");
-            if (bm != null) {
-                tox.setImageBitmap(bm);
-            }
         }
     }
 ```             
