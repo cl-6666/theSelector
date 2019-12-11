@@ -78,7 +78,12 @@ public class GlideLoader implements ImageLoader {
                         
                         
 4、调用系统相机
-  ImagePicker.getInstance().startCamera(MainActivity.this, 200);
+  CameraConfig config = new CameraConfig.Builder()
+                        .needCrop(false)  //是否裁剪
+                        .cropSize(1, 1, 200, 200)
+                        .build();
+                imagePicker.getInstance().toCameraActivity(MainActivity.this, config, REQUEST_SELECT_IMAGES_CODE);
+ 
               
 5、如何获取选中的图片集合：
     @Override
