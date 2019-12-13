@@ -99,5 +99,8 @@ public class GlideLoader implements ImageLoader {
             List<String> imagePaths = data.getStringArrayListExtra(ImagePicker.EXTRA_SELECT_IMAGES);
         }
     }
-```             
+``` 
+
+### 博客地址  
+https://blog.csdn.net/a214024475/article/details/95219312
                 
